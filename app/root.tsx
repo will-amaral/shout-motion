@@ -1,6 +1,7 @@
-import type { LinksFunction, MetaFunction } from '@remix-run/node'
+import type { LinksFunction, MetaFunction, RouteHandle } from '@remix-run/node'
 import {
   Links,
+  Link,
   LiveReload,
   Meta,
   Outlet,
@@ -21,6 +22,11 @@ export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: picoCss },
   { rel: 'stylesheet', href: globalCss },
 ]
+
+export const handle: RouteHandle = {
+  breadcrumb: () => <Link to="/">Home</Link>,
+  current: () => 'Home',
+}
 
 export default function App() {
   return (

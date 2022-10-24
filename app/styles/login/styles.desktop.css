@@ -1,0 +1,7 @@
+.hero {
+  display: block;
+  background-color: #374956;
+  background-image: url('https://source.unsplash.com/-Vqn2WrfxTQ/1000x1200');
+  background-position: center;
+  background-size: cover;
+}

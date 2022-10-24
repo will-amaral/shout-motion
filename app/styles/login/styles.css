@@ -1,0 +1,11 @@
+article {
+  padding: 0;
+}
+
+.wrapper {
+  padding: var(--block-spacing-vertical) var(--block-spacing-horizontal);
+}
+
+.hero {
+  display: none;
+}

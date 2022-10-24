@@ -104,3 +104,70 @@ code {
   --alert-background-color: var(--primary-focus);
   --alert-text-color: #fff;
 }
+
+body > nav {
+  --nav-link-spacing-vertical: 1rem;
+  border-bottom: 1px solid var(--nav-border-color);
+  box-shadow: 0 1px 0 var(--nav-border-color);
+}
+
+img.logo {
+  max-height: 50px;
+}
+
+body > main {
+  padding: 0;
+  padding-top: var(--block-spacing-vertical);
+}
+
+body > div {
+  display: flex;
+  gap: 8px;
+}
+
+body > div > aside {
+  min-width: max-content;
+}
+
+aside li a {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-weight: 400;
+  color: var(--contrast);
+  padding: 16px;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  margin: 4px 16px;
+}
+
+aside li a:hover,
+aside li a.active {
+  color: var(--primary);
+  background-color: var(--primary-focus);
+}
+
+aside li a.active {
+  font-weight: 700;
+}
+
+li > form {
+  margin: 0;
+}
+
+main {
+  width: 100%;
+}
+
+body > div > main,
+body > div > aside {
+  padding: 0 var(--block-spacing-horizontal);
+}
+
+.align-right {
+  text-align: right;
+}
+
+.outline.ghost {
+  border: none;
+}
