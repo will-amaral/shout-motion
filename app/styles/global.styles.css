@@ -117,7 +117,7 @@ img.logo {
 
 body > main {
   padding: 0;
-  padding-top: var(--block-spacing-vertical);
+  padding-top: calc(var(--block-spacing-vertical) / 2);
 }
 
 body > div {

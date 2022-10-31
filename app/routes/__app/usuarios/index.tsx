@@ -4,17 +4,18 @@ import type { User } from '@prisma/client'
 import type { LoaderFunction } from '@remix-run/node'
 import { json } from '@remix-run/node'
 import { useLoaderData, Link } from '@remix-run/react'
-import SectionHeader from '@/components/SectionHeader'
-import Data from '@/components/Data'
+import { SectionHeader, Table } from '@/components'
+import { formatDate } from '@/helpers/date.helpers'
 
 type LoaderData = {
   users: Partial<User>[]
 }
 
 export const loader: LoaderFunction = async ({ request }) => {
-  await requireSession(request)
+  const userId = await requireSession(request)
   const users = await db.user.findMany({
     select: {
+      id: true,
       email: true,
       createdAt: true,
       updatedAt: true,
@@ -23,7 +24,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     },
   })
   const data: LoaderData = {
-    users,
+    users: users.filter(({ id }) => id !== userId),
   }
   return json(data)
 }
@@ -41,7 +42,27 @@ export default function Usuarios() {
           </Link>
         }
       />
-      <Data data={users} />
+      <Table
+        rows={users}
+        columns={[
+          { title: 'Nome', field: 'name' },
+          { title: 'Email', field: 'email' },
+          {
+            title: 'Data de Criação',
+            field: 'createdAt',
+            render: value => formatDate(value as string),
+          },
+          {
+            title: 'Nível de Usuário',
+            field: 'role',
+          },
+          {
+            title: 'Ações',
+            field: 'id',
+            render: id => <Link to={id as string}>Ver mais </Link>,
+          },
+        ]}
+      />
     </>
   )
 }

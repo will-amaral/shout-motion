@@ -22,7 +22,7 @@ export const action: ActionFunction = async ({ request }) => {
   const password = form.get('password') as string
   const email = form.get('email') as string
   const role = form.get('role') as Role
-  const data = createUser({ name, password, email, role })
+  const data = await createUser({ name, password, email, role })
 
   if (typeof data === 'string') throw new Error(data)
   return redirect('/usuarios')
